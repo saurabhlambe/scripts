@@ -16,9 +16,9 @@ db=ranger
 user=rangeradmin
 
 # Edit the config files
-echo "local all postgres,ranger,rangerlogger trust
-host all postgres,ranger,rangerlogger 0.0.0.0/0 trust
-host all postgres,ranger,rangerlogger ::/0 trust" >> /var/lib/pgsql/9.6/data/pg_hba.conf
+echo "local all postgres,rangeradmin,rangerlogger trust
+host all postgres,rangeradmin,rangerlogger 0.0.0.0/0 trust
+host all postgres,rangeradmin,rangerlogger ::/0 trust" >> /var/lib/pgsql/9.6/data/pg_hba.conf
 sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /var/lib/pgsql/9.6/data/postgresql.conf
 systemctl start postgresql-9.6
 
