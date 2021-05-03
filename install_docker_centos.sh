@@ -5,7 +5,14 @@ echo "This script installs Docker on CentOS"
 echo # blank line
 
 echo "Remove previous docker versions if they exist"
-sudo yum remove docker                   docker-client                   docker-client-latest                   docker-common                   docker-latest                   docker-latest-logrotate                   docker-logrotate                   docker-engine
+sudo yum remove docker \
+	docker-client \
+	docker-client-latest \
+	docker-common \
+	docker-latest \
+	docker-latest-logrotate \
+	docker-logrotate \
+	docker-engine
 echo # blank line
 
 echo "Set up Docker repo"
