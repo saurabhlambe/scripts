@@ -24,15 +24,3 @@ echo "Install Docker"
 sudo yum install docker-ce docker-ce-cli containerd.io -y
 echo # blank line
 
-echo "Start and enable Docker"
-sudo systemctl start docker
-sudo systemctl enable docker
-echo # blank line
-
-echo "Verify the installation"
-sudo docker run hello-world
-echo # blank line
-
-echo "Verify docker version"
-docker --version
-
