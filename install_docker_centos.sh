@@ -24,3 +24,7 @@ echo "Install Docker"
 sudo yum install docker-ce docker-ce-cli containerd.io -y
 echo # blank line
 
+echo "Starting Docker"
+sudo systemctl start docker
+sudo systemctl enable docker
+echo # blank line
