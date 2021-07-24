@@ -21,6 +21,7 @@ host all postgres,rangeradmin,rangerlogger 0.0.0.0/0 trust
 host all postgres,rangeradmin,rangerlogger ::/0 trust" >> /var/lib/pgsql/9.6/data/pg_hba.conf
 sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /var/lib/pgsql/9.6/data/postgresql.conf
 systemctl start postgresql-9.6
+systemctl enable postgresql-9.6
 
 # Create database and assign role
 su - postgres bash -c "psql -c \"CREATE DATABASE $db;\""
