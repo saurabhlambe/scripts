@@ -3,7 +3,7 @@
 # This script will install and set up a Postgres-9.6 database for Ranger.
 
 # Install Postgres-9.6
-yum install https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm -y
+yum install https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm -y
 yum install postgresql96-contrib postgresql96-server -y
 
 # Initialize postgres
