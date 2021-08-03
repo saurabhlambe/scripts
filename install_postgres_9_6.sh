@@ -9,9 +9,8 @@ yum install postgresql96-contrib postgresql96-server -y
 # Initialize postgres
 /usr/pgsql-9.6/bin/postgresql96-setup initdb
 
-# Append these lines to allow
-
 # Define variables
+# Replace db and user according you your needs
 db=ranger
 user=rangeradmin
 
