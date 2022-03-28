@@ -11,8 +11,8 @@ yum install postgresql96-contrib postgresql96-server -y
 
 # Define variables
 # Replace db and user according you your needs
-db=ranger
-user=rangeradmin
+db=test
+user=testadmin
 
 # Edit the config files
 echo "local all postgres,$user,rangerlogger trust
@@ -24,7 +24,7 @@ systemctl enable postgresql-9.6
 
 # Create database and assign role
 su - postgres bash -c "psql -c \"CREATE DATABASE $db;\""
-su - postgres bash -c "psql -c \"CREATE USER $user WITH PASSWORD 'bigdata';\""
+su - postgres bash -c "psql -c \"CREATE USER $user WITH PASSWORD 'testpasswd';\""
 su - postgres bash -c "psql -c \"GRANT ALL PRIVILEGES ON DATABASE $db TO $user;\""
 su - postgres bash -c 'psql -c \\list'
 
