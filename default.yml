@@ -1,0 +1,128 @@
+# espanso configuration file
+
+# This is the default configuration file, change it as you like it
+# You can refer to the official documentation:
+# https://espanso.org/docs/
+
+# Matches are the substitution rules, when you type the "trigger" string
+# it gets replaced by the "replace" string.
+matches:
+  # Simple text replacement
+  - trigger: ":espanso"
+    replace: "Hi there!"
+
+  # Dates
+  - trigger: ":date"
+    replace: "{{mydate}}"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%d/%m/%Y"
+
+  # Shell commands
+  - trigger: ":shell"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "echo Hello from your shell"
+
+  # Shortform for bootstrap-server
+  - trigger: "--bs"
+    replace: "--bootstrap-server"
+
+  # Thanks
+  - trigger: "..thx"
+    replace: "Thanks,\nSaurabh"
+
+  # Regards
+  - trigger: "..reg"
+    replace: "Regards,\nSaurabh"
+
+  # Zendesk URL
+  - trigger: "..case"
+    replace: "https://confluent.zendesk.com/agent/tickets/"
+
+  # triage
+  - trigger: "..tri1"
+    replace: "Thank you for reaching out to Confluent Support. My name is Saurabh, a technical support engineer working in the IST region. I will assist you with this ticket."
+
+  - trigger: "..tri2"
+    replace: "Thank you for contacting Confluent Support. I'm Saurabh, from Global Technical Support and I will assist you with this ticket."
+
+  # WebEx URL
+  - trigger: "..web"
+    replace: "https://confluent-support.webex.com/meet/slambe"
+
+  # Meeting summary
+  - trigger: "..summ"
+    replace: "Thank you for your time earlier today. Please find the meeting summary below:\n\nATTENDEES:\n\nFINDINGS:\n\nNEXT STEPS:\n\nRegards,\nSaurabh"
+
+  # JIRA
+  - trigger: "..jira"
+    replace: "https://confluentinc.atlassian.net/browse/"
+
+  # Zoom
+  - trigger: "..zoo"
+    replace: "https://confluent.zoom.us/my/slambe"
+
+  # Confluent Cloud
+  - trigger: "..cc"
+    replace: "Confluent Cloud" 
+
+  # Signature
+  - trigger: "..sig"
+    replace: "Regards,\nSaurabh Lambe\nTechnical Support Engineer\nConfluent"
+
+  # Reference cases
+  - trigger: "..ref"
+    replace: "Reference cases:\n"
+
+  # Apache JIRA
+  - trigger: "..apache"
+    replace: "https://issues.apache.org/jira/browse/"
+
+  # confluent platform
+  - trigger: "..cp"
+    replace: "Confluent Platform"
+
+  # confluent
+  - trigger: "..cf"
+    replace: "Confluent"
+
+  # severity guide
+  - trigger: "..sev"
+    replace: "https://support.confluent.io/hc/en-us/articles/360042735832-Welcome-to-Confluent-Support"
+
+  # feedback
+  - trigger: "..pleasure"
+    replace: "Please feel free to raise a new ticket if you require assistance in the future. It was a pleasure assisting you."
+
+  # severity
+  - trigger: "..lower"
+    replace: "Please note that lowering the priority does not have a bearing on the case analysis. This is only to accurately reflect the current status."
+
+  # triage3
+  - trigger: "..tri3"
+    replace: "Thank you for contacting Confluent Support. My name is Saurabh, I will assist you with this ticket."
+
+  # Downloads path
+  - trigger: "..dn"
+    replace: "~/Downloads/"
+
+  # confluent control center
+  - trigger: "..c3"
+    replace: "Confluent Control Center"
+
+  # priority
+  - trigger: "..p2"
+    replace: "A Priority Two Issue means (i) the production system is functioning with limited capabilities, or (ii) the production system is unstable with periodic interruptions."
+  # priority
+  - trigger: "..p1"
+    replace: "A Priority One Error means (i) the production system is severely impacted or completely shut down, or (ii) the production system operations or mission-critical applications are down."
+
+  # jisho
+  - trigger: "..jis"
+    replace: "https://jisho.org/search/"
