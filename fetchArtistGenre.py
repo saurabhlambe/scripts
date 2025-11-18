@@ -21,3 +21,4 @@ artist_id = os.environ.get('ARTIST_ID')
 if not artist_id:
     raise ValueError("ARTIST_ID environment variable must be set")
 artist = sp.artist(f'spotify:artist:{artist_id}')
+print(artist['name'], artist['genres'])
