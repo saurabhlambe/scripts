@@ -14,3 +14,4 @@ python3.6 -V
 
 # Install pip
 yum -y install python36u-pip
+echos "Pip installed"

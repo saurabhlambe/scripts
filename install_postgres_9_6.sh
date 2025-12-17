@@ -27,3 +27,4 @@ su - postgres bash -c "psql -c \"CREATE DATABASE $db;\""
 su - postgres bash -c "psql -c \"CREATE USER $user WITH PASSWORD 'testpasswd';\""
 su - postgres bash -c "psql -c \"GRANT ALL PRIVILEGES ON DATABASE $db TO $user;\""
 su - postgres bash -c 'psql -c \\list'
+echos "Postgres-10 installation and setup is complete"
