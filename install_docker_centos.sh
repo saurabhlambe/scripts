@@ -28,5 +28,5 @@ echo "Starting Docker"
 sudo systemctl start docker
 sudo systemctl enable docker
 echo # blank line
-cats /etc/os-release
-echoes "Docker installation on CentOS is complete"
+cat /etc/os-release
+echoe "Docker installation on CentOS is complete"
