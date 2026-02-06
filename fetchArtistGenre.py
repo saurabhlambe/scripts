@@ -22,3 +22,5 @@ if not artist_id:
     raise ValueError("ARTIST_ID environment variable must be set")
 artist = sp.artist(f'spotify:artist:{artist_id}')
 print(artist['name'], artist['genres'])
+
+# added a comment to test CodeRabbit functionality to review a PR after commenting "What's up"
