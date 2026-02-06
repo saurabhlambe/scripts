@@ -28,5 +28,4 @@ echo "Starting Docker"
 sudo systemctl start docker
 sudo systemctl enable docker
 echo # blank line
-echo # another blanmk line
-echos "Docker installation completed"
+cat /etc/os-release

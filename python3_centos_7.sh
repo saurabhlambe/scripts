@@ -14,5 +14,4 @@ python3.6 -V
 
 # Install pip
 yum -y install python36u-pip
-# This comment does nothing at all
-
+echo "Pip installed"
