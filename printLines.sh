@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # This file just prints some lines on to the console
-read -p "Please enter your name: " user_input
+read -p "Please enter your name: " userInput
 echo
-echo "Welcome, $user_input"
+echo "Welcome, $userInput"
 
 
