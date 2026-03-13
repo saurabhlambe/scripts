@@ -5,3 +5,4 @@ read -p "Please enter your name: " userName
 echo
 echo "Welcome, $userName"
 echo "########"
+echo "this line does nothing"
