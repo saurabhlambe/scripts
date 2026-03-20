@@ -14,4 +14,5 @@ We see that you prefer communicating in {language}, which is awesome.
 We’re glad to have you onboard—enjoy your experience!
 """
 
+priint(message)
 print(message)
