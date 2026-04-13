@@ -11,7 +11,7 @@ Welcome, {full_name}!
 Your username is {username}, and it's great to have someone from {country} here.
 We see that you prefer communicating in {language}, which is awesome.
 
-We’re glad to have you onboard—enjoy your experience!
+We're glad to have you onboard--enjoy your experience!
 """
 
 print(message)
