@@ -16,18 +16,44 @@ Options:
 
 import argparse
 import json
+import os
 import sys
+import tempfile
 from pathlib import Path
+
+
+def unescape_strings(obj):
+    """Recursively expand \\n and \\t in string values before serialization."""
+    if isinstance(obj, str):
+        return obj.replace("\\n", "\n").replace("\\t", "\t")
+    if isinstance(obj, dict):
+        return {
+            unescape_strings(k): unescape_strings(v)
+            for k, v in obj.items()
+        }
+    if isinstance(obj, list):
+        return [unescape_strings(item) for item in obj]
+    return obj
 
 
 def process(text, output_path=None, indent=2):
     """Parse, beautify, and unescape a JSON string."""
     data = json.loads(text, strict=False)
-    formatted = json.dumps(data, indent=indent, ensure_ascii=False)
-    formatted = formatted.replace("\\n", "\n").replace("\\t", "\t")
+    data = unescape_strings(data)
+    formatted = json.dumps(
+        data, indent=indent, ensure_ascii=False, allow_nan=False
+    )
 
     if output_path:
-        Path(output_path).write_text(formatted + "\n", encoding="utf-8")
+        dest = Path(output_path)
+        fd, tmp = tempfile.mkstemp(dir=dest.parent, suffix=".tmp")
+        try:
+            with os.fdopen(fd, "w", encoding="utf-8") as f:
+                f.write(formatted + "\n")
+            os.replace(tmp, dest)
+        except Exception:
+            os.unlink(tmp)
+            raise
         print(f"Written to {output_path}")
     else:
         print(formatted)
@@ -59,6 +85,13 @@ def main():
         help="Overwrite input file(s)",
     )
     args = parser.parse_args()
+
+    if args.in_place and args.output:
+        print(
+            "Error: --in-place and --output are mutually exclusive.",
+            file=sys.stderr,
+        )
+        sys.exit(1)
 
     if args.output and len(args.files) > 1:
         print(
