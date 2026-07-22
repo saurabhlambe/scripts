@@ -17,6 +17,7 @@ Options:
 import argparse
 import json
 import os
+import stat
 import sys
 import tempfile
 from pathlib import Path
@@ -27,10 +28,7 @@ def unescape_strings(obj):
     if isinstance(obj, str):
         return obj.replace("\\n", "\n").replace("\\t", "\t")
     if isinstance(obj, dict):
-        return {
-            unescape_strings(k): unescape_strings(v)
-            for k, v in obj.items()
-        }
+        return {k: unescape_strings(v) for k, v in obj.items()}
     if isinstance(obj, list):
         return [unescape_strings(item) for item in obj]
     return obj
@@ -50,6 +48,8 @@ def process(text, output_path=None, indent=2):
         try:
             with os.fdopen(fd, "w", encoding="utf-8") as f:
                 f.write(formatted + "\n")
+            if dest.exists():
+                os.chmod(tmp, stat.S_IMODE(dest.stat().st_mode))
             os.replace(tmp, dest)
         except Exception:
             os.unlink(tmp)
@@ -101,6 +101,12 @@ def main():
         sys.exit(1)
 
     if not args.files:
+        if args.in_place:
+            print(
+                "Error: --in-place requires at least one input file.",
+                file=sys.stderr,
+            )
+            sys.exit(1)
         if sys.stdin.isatty():
             print(
                 "Reading JSON (paste below, then press Ctrl+D):",
